@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Assets.Scripts;
 
 public class GenCubes : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class GenCubes : MonoBehaviour
     public float x3 = -1.7f + 1.537f;
     public float x2 = -3.3f + 1.537f;
     public float x1 = -4.9f + 1.537f;
-    public float z = 2;
+    public float z = Constants.distance_Z_betweenCubes;
     public float y = 0.42f;
     // Start is called before the first frame update
     void Start()
@@ -27,23 +28,23 @@ public class GenCubes : MonoBehaviour
         System.Random rand = new System.Random();
         for (int i = 0; i < levelSize; i++)
         {
-            if (rand.Next(0, 2) == 0)
+            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
                 Instantiate(block, new Vector3(x1, y, z), Quaternion.identity, Cubes);
             }
-            if (rand.Next(0, 2) == 0)
+            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
                 Instantiate(block, new Vector3(x2, y, z), Quaternion.identity, Cubes);
             }
-            if (rand.Next(0, 2) == 0)
+            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
                 Instantiate(block, new Vector3(x3, y, z), Quaternion.identity, Cubes);
             }
-            if (rand.Next(0, 2) == 0)
+            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
                 Instantiate(block, new Vector3(x4, y, z), Quaternion.identity, Cubes);
             }
-            if (rand.Next(0, 2) == 0)
+            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
                 Instantiate(block, new Vector3(x5, y, z), Quaternion.identity, Cubes);
             }

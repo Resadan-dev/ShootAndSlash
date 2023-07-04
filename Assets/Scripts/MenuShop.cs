@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,13 +15,13 @@ public class MenuShop : MonoBehaviour
     public static MenuShop ms;
     private void Awake()
     {
-        if (PlayerPrefs.GetInt("newWeaponBool") == 1)
+        if (Constants.GetValueInMemory("newWeaponBool") == 1)
         {
             GameObject btn = GameObject.Find("AddWeaponButton");
             Button imgButton = btn.GetComponent<Button>();
             imgButton.interactable = false;
         }
-        if (PlayerPrefs.GetInt("armorBool") == 1)
+        if (Constants.GetValueInMemory("armorBool") == 1)
         {
             GameObject btn = GameObject.Find("ShieldButton");
             Button imgButton = btn.GetComponent<Button>();
@@ -36,34 +37,34 @@ public class MenuShop : MonoBehaviour
 
     public void newWeapon ()
     {
-        int gold = PlayerPrefs.GetInt("gold");
-        if  (gold >= 00)
+        int gold = Constants.GetValueInMemory("gold");
+        if  (gold >= Constants.newWeaponPrice)
         {
-            PlayerPrefs.SetInt("gold", gold - 0);
+            Constants.SetValueInMemory("gold", gold - Constants.newWeaponPrice);
             GameObject btn = GameObject.Find("AddWeaponButton");
             Button imgButton = btn.GetComponent<Button>();
             imgButton.interactable = false;
-            PlayerPrefs.SetInt("newWeaponBool", 1);
+            Constants.SetValueInMemory("newWeaponBool", 1);
             IsnewWeapon = true;
             GameObject btnBack = GameObject.Find("BackToMenuButton");
             Button btnBackButton = btnBack.GetComponent<Button>();
             btnBackButton.Select();
         }
-        gold = PlayerPrefs.GetInt("gold");
+        gold = Constants.GetValueInMemory("gold");
         goldText.text = gold.ToString();
     }
 
     public void oneShield()
     {
-        int gold = PlayerPrefs.GetInt("gold");
-        if (gold >= 0)
+        int gold = Constants.GetValueInMemory("gold");
+        if (gold >= Constants.armorPrice)
         {
-            PlayerPrefs.SetInt("gold", gold - 0);
+            Constants.SetValueInMemory("gold", gold - Constants.armorPrice);
             GameObject btn = GameObject.Find("ShieldButton");
             Button imgButton = btn.GetComponent<Button>();
             imgButton.interactable = false;
-            PlayerPrefs.SetInt("life", 2);
-            PlayerPrefs.SetInt("armorBool", 1);
+            Constants.SetValueInMemory("life", 2);
+            Constants.SetValueInMemory("armorBool", 1);
             IsnewArmor = true;
             GameObject btnBack = GameObject.Find("BackToMenuButton");
             Button btnBackButton = btnBack.GetComponent<Button>();
@@ -72,14 +73,14 @@ public class MenuShop : MonoBehaviour
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
             renderer.sharedMaterial.color = new Color32(157, 197, 227, 155);
         }
-        gold = PlayerPrefs.GetInt("gold");
+        gold = Constants.GetValueInMemory("gold");
         goldText.text = gold.ToString();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        int gold = PlayerPrefs.GetInt("gold");
+        int gold = Constants.GetValueInMemory("gold");
         goldText.text = gold.ToString();
     }
 

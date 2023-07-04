@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -28,16 +29,16 @@ public class PlayerInfos : MonoBehaviour
     }
     public void GetGold(int amount)
     {
-        int goldStored = PlayerPrefs.GetInt("gold");
+        int goldStored = Constants.GetValueInMemory("gold");
         gold = goldStored + amount;
-        PlayerPrefs.SetInt("gold", gold);
+        Constants.SetValueInMemory("gold", gold);
         goldTxt.text = "Gold : " + gold.ToString();
     }
     public void GetLife(int amount)
     {
-        int lifeStored = PlayerPrefs.GetInt("life");
+        int lifeStored = Constants.GetValueInMemory("life");
         life = lifeStored + amount;
-        PlayerPrefs.SetInt("life", life);
+        Constants.SetValueInMemory("life", life);
         lifeTxt.text = "Life : " + life.ToString();
     }
     public void UpdateCoolDown(int nb)
@@ -54,8 +55,8 @@ public class PlayerInfos : MonoBehaviour
         isGameOver = true;
         scoreTxt.text = "GAME OVER";
         yield return new WaitForSeconds(0.5f);
-        PlayerPrefs.SetInt("Score", score);
-        PlayerPrefs.SetInt("DashActivated", 0);
+        Constants.SetValueInMemory("Score", score);
+        Constants.SetValueInMemory("DashActivated", 0);
         SceneManager.LoadScene(0);
     }
 
@@ -63,8 +64,8 @@ public class PlayerInfos : MonoBehaviour
 // Start is called before the first frame update
 void Start()
     {
-        goldTxt.text = "Gold : " + PlayerPrefs.GetInt("gold");
-        lifeTxt.text = "Life : " + PlayerPrefs.GetInt("life");
+        goldTxt.text = "Gold : " + Constants.GetValueInMemory("gold");
+        lifeTxt.text = "Life : " + Constants.GetValueInMemory("life");
     }
 
     // Update is called once per frame

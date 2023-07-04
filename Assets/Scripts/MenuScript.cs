@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,11 @@ public class MenuScript : MonoBehaviour
 {
     public void LoadLevel()
     {
-        if (Object.ReferenceEquals(null, PlayerPrefs.GetInt("armorBool")))
+        if (Object.ReferenceEquals(null, Constants.GetValueInMemory("armorBool")))
         {
-            PlayerPrefs.SetInt("armorBool", 0);
+            Constants.SetValueInMemory("armorBool", 0);
         }
-        else if (PlayerPrefs.GetInt("armorBool") == 1 && PlayerPrefs.GetInt("life") == 1)
+        else if (Constants.GetValueInMemory("armorBool") == 1 && Constants.GetValueInMemory("life")== 1)
         {
             PlayerInfos.pi.GetLife(1);
         }
@@ -23,25 +24,23 @@ public class MenuScript : MonoBehaviour
     }
     public void QuitGame()
     {
-        PlayerPrefs.SetInt("gold", 0);
-        PlayerPrefs.SetInt("newWeaponBool", 0);
-        PlayerPrefs.SetInt("armorBool", 0);
-        PlayerPrefs.SetInt("Score", 0);
-        PlayerPrefs.SetInt("MaxScore", 0);
-        PlayerPrefs.SetInt("life", 1);
-        PlayerPrefs.SetInt("DashActivated", 0);
+        ResetValuesInMemory();
         Application.Quit();
     }
     public void ResetGame()
     {
-        PlayerPrefs.SetInt("gold", 0);
-        PlayerPrefs.SetInt("newWeaponBool", 0);
-        PlayerPrefs.SetInt("armorBool", 0);
-        PlayerPrefs.SetInt("Score", 0);
-        PlayerPrefs.SetInt("MaxScore", 0);
-        PlayerPrefs.SetInt("life", 1);
-        PlayerPrefs.SetInt("DashActivated", 0);
+        ResetValuesInMemory();
         SceneManager.LoadScene(0);
+    }
+    public void ResetValuesInMemory()
+    {
+        Constants.SetValueInMemory("gold", 0);
+        Constants.SetValueInMemory("newWeaponBool", 0);
+        Constants.SetValueInMemory("armorBool", 0);
+        Constants.SetValueInMemory("Score", 0);
+        Constants.SetValueInMemory("MaxScore", 0);
+        Constants.SetValueInMemory("life", 1);
+        Constants.SetValueInMemory("DashActivated", 0);
     }
     // Start is called before the first frame update
     void Start()

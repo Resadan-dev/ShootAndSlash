@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class CubeAttack : MonoBehaviour
 
     public Transform bulletSpawnCube;
     public GameObject cubeBulletPrefab;
-    public float bulletSpeed = -2f;
+    public float bulletSpeed = Constants.bulletSpeed;
     public Rigidbody rb;
 
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class CubeAttack : MonoBehaviour
         float randomization = rand.Next(-10, 10);
         bulletSpawnCube.transform.rotation = Quaternion.Euler(0, randomization + 180, 0);
 
-        if (rand.Next(0, 4) == 0)
+        if (rand.Next(0, Constants.probabilityBullet) == 0)
         {
             var bullet = Instantiate(cubeBulletPrefab, bulletSpawnCube.position, bulletSpawnCube.rotation);
             bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * bulletSpeed;
@@ -29,21 +30,18 @@ public class CubeAttack : MonoBehaviour
             
             if (transform.tag == "greenCube")
             {
-                Color32 newColor = new Color32(0, 255, 0, 0);
                 var renderer = bullet.GetComponent<Renderer>();
-                renderer.material.color = newColor;
+                renderer.material.color = Constants.GetCubeColor("green");
             }
             if (transform.tag == "orangeCube")
             {
-                Color32 newColor = new Color32(255, 155, 0, 0);
                 var renderer = bullet.GetComponent<Renderer>();
-                renderer.material.color = newColor;
+                renderer.material.color = Constants.GetCubeColor("orange");
             }
             if (transform.tag == "redCube")
             {
-                Color32 newColor = new Color32(255, 0, 0, 0);
                 var renderer = bullet.GetComponent<Renderer>();
-                renderer.material.color = newColor;
+                renderer.material.color = Constants.GetCubeColor("red");
             }
         }
         bulletSpawnCube.transform.rotation = Quaternion.Euler(0, -randomization + 180, 0);

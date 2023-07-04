@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,17 +15,17 @@ public class ScoreManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int goldInt = PlayerPrefs.GetInt("gold");
+        int goldInt = Constants.GetValueInMemory("gold");
         gold.text = "Gold : " + goldInt;
-        int scoreRecorded = PlayerPrefs.GetInt("Score");
+        int scoreRecorded = Constants.GetValueInMemory("Score");
         print("scoreRecorded : " + scoreRecorded);
-        int maxScoreRecorded = PlayerPrefs.GetInt("MaxScore");
+        int maxScoreRecorded = Constants.GetValueInMemory("MaxScore");
         print("maxScoreRecorded : " + maxScoreRecorded);
         score.text = "Previous score : " + scoreRecorded;
         if (scoreRecorded > maxScoreRecorded || maxScoreRecorded == 0)
         {
             print("ici");
-            PlayerPrefs.SetInt("MaxScore", scoreRecorded);
+            Constants.SetValueInMemory("MaxScore", scoreRecorded);
             maxScore.text = "Your best score : " + scoreRecorded;
         }
         else maxScore.text = "Your best score : " + maxScoreRecorded;

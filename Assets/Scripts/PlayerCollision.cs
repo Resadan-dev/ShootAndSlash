@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,6 @@ public class PlayerCollision : MonoBehaviour
     public GameObject Shield;
     private void OnTriggerEnter(Collider other)
     {
-        int lifePlayer = PlayerPrefs.GetInt("life");
         if (other.gameObject == Shield)
         {
             print("OK");
@@ -41,7 +41,7 @@ public class PlayerCollision : MonoBehaviour
     }
     public void SetOrangeCube()
     {
-        life = 3;
+        life = Constants.orangeCubeLife;
         Renderer myRenderer = GetComponent<Renderer>();
         Color32 newColor = new Color32(255, 155, 0, 0);
         myRenderer.material.color = newColor;
@@ -49,7 +49,7 @@ public class PlayerCollision : MonoBehaviour
     }
     public void SetRedCube()
     {
-        life = 10;
+        life = Constants.redCubeLife;
         Renderer myRenderer = GetComponent<Renderer>();
         Color32 newColor = new Color32(255, 0, 0, 0);
         myRenderer.material.color = newColor;

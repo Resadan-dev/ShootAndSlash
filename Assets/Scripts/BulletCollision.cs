@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ public class BulletCollision : MonoBehaviour
         {
             if (other.gameObject.tag == "Player")
             {
-                if (PlayerPrefs.GetInt("DashActivated") == 1)
+                if (Constants.GetValueInMemory("DashActivated") == 1)
                 {
                     print("C'est moi");
                     print("Tout va bien");
@@ -28,7 +29,7 @@ public class BulletCollision : MonoBehaviour
                 else
                 {
                     print("C'est pas moi");
-                    int lifePlayer = PlayerPrefs.GetInt("life");
+                    int lifePlayer = Constants.GetValueInMemory("life");
                     print(lifePlayer);
                     if (lifePlayer == 2)
                     {

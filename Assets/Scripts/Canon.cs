@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -30,7 +31,7 @@ public class Canon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("armorBool") == 1)
+        if (Constants.GetValueInMemory("armorBool") == 1)
         {
             Renderer renderer = Shield.GetComponent<Renderer>();
             renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
@@ -41,14 +42,14 @@ public class Canon : MonoBehaviour
     {
         if (other.gameObject.tag == "greenCube" || other.gameObject.tag == "orangeCube" || other.gameObject.tag == "redCube")
         {
-            if (PlayerPrefs.GetInt("DashActivated") == 1)
+            if (Constants.GetValueInMemory("DashActivated") == 1)
             {
                 print("C'est moi");
                 print("Tout va bien");
             }
             else
             {
-                int currentLife = PlayerPrefs.GetInt("life");
+                int currentLife = Constants.GetValueInMemory("life");
                 if (currentLife == 1)
                 {
                     Destroy(gameObject);
@@ -70,7 +71,7 @@ public class Canon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Fire1") != 0 && PlayerPrefs.GetInt("newWeaponBool") == 0) 
+        if (Input.GetAxisRaw("Fire1") != 0 && Constants.GetValueInMemory("newWeaponBool") == 0) 
         {
             if (m_isAxisInUse == false)
             {
@@ -83,14 +84,14 @@ public class Canon : MonoBehaviour
         {
             m_isAxisInUse = false;
         }
-        if (Input.GetAxisRaw("Fire1") != 0 && PlayerPrefs.GetInt("newWeaponBool") == 1)
+        if (Input.GetAxisRaw("Fire1") != 0 && Constants.GetValueInMemory("newWeaponBool") == 1)
         {
             if (m_isAxisInUse == false)
             {
             Vector3 position = bulletSpawnPoint.position;
-            position.x = position.x + 0.7f;
+            position.x = position.x + Constants.spawnBulletPositionRight;
             Vector3 position2 = bulletSpawnPoint.position;
-            position2.x = position2.x - 0.7f;
+            position2.x = position2.x - Constants.spawnBulletPositionRight;
             m_isAxisInUse = true;
             var bullet1 = Instantiate(bulletPrefab, position, bulletSpawnPoint.rotation);
             var bullet2 = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
@@ -110,9 +111,9 @@ public class Canon : MonoBehaviour
             m_isDashActivated = false;
         }
 
-        if ((Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) && Input.GetAxisRaw("Fire3") != 0 && PlayerPrefs.GetInt("DashActivated") != 2)
+        if ((Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) && Input.GetAxisRaw("Fire3") != 0 && Constants.GetValueInMemory("DashActivated") != 2)
         {
-            PlayerPrefs.SetInt("DashActivated", 1);
+            Constants.SetValueInMemory("DashActivated", 1);
             isDashActivated = true;
             
             if (m_isDashActivated == false)
@@ -135,18 +136,15 @@ public class Canon : MonoBehaviour
     }
     IEnumerator Wait()
     {
-        print("là 1" + PlayerPrefs.GetInt("DashActivated"));
         Renderer myRenderer = GetComponent<Renderer>();
         Color32 newColor = new Color32(37, 90, 255, 20);
         myRenderer.material.color = newColor;
         PlayerInfos.pi.UpdateCoolDown(4);
         yield return new WaitForSeconds(0.5f);
-        PlayerPrefs.SetInt("DashActivated", 2);
+        Constants.SetValueInMemory("DashActivated", 2);
         newColor = new Color32(37, 90, 255, 255);
         myRenderer.material.color = newColor;
         yield return new WaitForSeconds(0.5f);
-        print("là 2" + PlayerPrefs.GetInt("DashActivated"));
-        //PlayerPrefs.SetInt("DashActivated", 2);
         PlayerInfos.pi.UpdateCoolDown(3);
         yield return new WaitForSeconds(1);
         PlayerInfos.pi.UpdateCoolDown(2);
@@ -154,7 +152,7 @@ public class Canon : MonoBehaviour
         PlayerInfos.pi.UpdateCoolDown(1);
         yield return new WaitForSeconds(1);
         PlayerInfos.pi.UpdateCoolDown(0);
-        PlayerPrefs.SetInt("DashActivated", 0);
+        Constants.SetValueInMemory("DashActivated", 0);
 
 
     }
