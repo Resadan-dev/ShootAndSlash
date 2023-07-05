@@ -48,7 +48,6 @@ public class PlayerInfos : MonoBehaviour
     public void GameOver()
     {
         StartCoroutine(GameOvering());
-
     }
     public IEnumerator GameOvering()
     {

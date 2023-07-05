@@ -78,6 +78,7 @@ namespace Assets.Scripts
         //GAME
 
         public static readonly float gameOverDelay = 0.5f;
+        public static readonly float MaxTime = 10f;
 
         //LIST OF VARIABLES IN MEMORY
 

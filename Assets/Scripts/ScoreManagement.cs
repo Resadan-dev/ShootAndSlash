@@ -15,6 +15,11 @@ public class ScoreManagement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (Constants.GetValueInMemory("Level1") == 1)
+        {
+            int gold = Constants.GetValueInMemory("gold");
+            Constants.SetValueInMemory("gold", gold + 1000);
+        }
         int goldInt = Constants.GetValueInMemory("gold");
         gold.text = "Gold : " + goldInt;
         int scoreRecorded = Constants.GetValueInMemory("Score");

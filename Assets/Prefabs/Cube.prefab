@@ -153,8 +153,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   life: 1
-  greenCubeGold: 10
-  OrangeCubeGold: 30
   Shield: {fileID: 1694171333841922431, guid: da36c7b0d682eb44f9316720cd1cd768, type: 3}
 --- !u!114 &2270058746107259613
 MonoBehaviour:

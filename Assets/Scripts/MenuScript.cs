@@ -1,10 +1,13 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
+    public TextMeshProUGUI level;
+    public static MenuScript ms;
     public void LoadLevel()
     {
         if (Object.ReferenceEquals(null, Constants.GetValueInMemory("armorBool")))
@@ -16,6 +19,10 @@ public class MenuScript : MonoBehaviour
             PlayerInfos.pi.GetLife(1);
         }
         SceneManager.LoadScene(1);
+    }
+    public void level2()
+    {
+        level.text = "Level 2";
     }
 
     public void LoadShop()
@@ -41,11 +48,19 @@ public class MenuScript : MonoBehaviour
         Constants.SetValueInMemory("MaxScore", 0);
         Constants.SetValueInMemory("life", 1);
         Constants.SetValueInMemory("DashActivated", 0);
+        Constants.SetValueInMemory("Level1", 0);
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (Object.ReferenceEquals(null, Constants.GetValueInMemory("Level1")))
+        {
+            Constants.SetValueInMemory("Level1", 0);
+        }
+        if (Constants.GetValueInMemory("Level1") == 1)
+        {
+            level2();
+        }
     }
 
     // Update is called once per frame

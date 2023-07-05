@@ -8,8 +8,6 @@ public class PlayerCollision : MonoBehaviour
 {
     public int score = 0;
     public int life = 1;
-    public int greenCubeGold = 10;
-    public int OrangeCubeGold = 30;
     public GameObject Shield;
     private void OnTriggerEnter(Collider other)
     {
@@ -25,8 +23,11 @@ public class PlayerCollision : MonoBehaviour
                 {
                     PlayerInfos.pi.GetScore();
                     if (gameObject.tag == "orangeCube")
-                        PlayerInfos.pi.GetGold(OrangeCubeGold);
-                    else PlayerInfos.pi.GetGold(greenCubeGold);
+                        PlayerInfos.pi.GetGold(Constants.orangeCubeGold);
+                    if (gameObject.tag == "redCube")
+                        PlayerInfos.pi.GetGold(Constants.redCubeGold);
+                    if (gameObject.tag == "greenCube")
+                        PlayerInfos.pi.GetGold(Constants.greenCubeGold);
 
                     Destroy(gameObject);
                     Destroy(other.gameObject);
