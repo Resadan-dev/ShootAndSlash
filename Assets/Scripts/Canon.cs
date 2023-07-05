@@ -22,7 +22,7 @@ public class Canon : MonoBehaviour
     private bool m_isDashActivated = false;
     public bool isDashActivated = false;
     public GameObject Shield;
-
+    public bool isCollisionBottomLimit = false;
 
     private void Awake()
     {
@@ -38,8 +38,23 @@ public class Canon : MonoBehaviour
             renderer.sharedMaterial.color = new Color32(157, 197, 227, 155);
         }
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "bottomLimit")  // or if(gameObject.CompareTag("YourWallTag"))
+        {
+            isCollisionBottomLimit = true;
+        }
+    }
+    void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "bottomLimit")  // or if(gameObject.CompareTag("YourWallTag"))
+        {
+            isCollisionBottomLimit = false;
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.tag == "greenCube" || other.gameObject.tag == "orangeCube" || other.gameObject.tag == "redCube")
         {
             if (Constants.GetValueInMemory("DashActivated") == 1)
@@ -65,7 +80,6 @@ public class Canon : MonoBehaviour
                     PlayerInfos.pi.GetLife(-1);
                 }
             }
-                
         }
     }
     // Update is called once per frame
@@ -105,7 +119,20 @@ public class Canon : MonoBehaviour
         }
 
         moveDir = new Vector3(Input.GetAxis("Horizontal") * 6, moveDir.y, Input.GetAxis("Vertical") * 6);
-        cc.Move(moveDir * Time.deltaTime);
+        if (isCollisionBottomLimit)
+        {
+            if (Input.GetAxis("Vertical") >= 0)
+            {
+                cc.Move(moveDir * Time.deltaTime);
+            }
+            else
+            {
+                moveDir = new Vector3(Input.GetAxis("Horizontal") * 6, moveDir.y, 0);
+                cc.Move(moveDir * Time.deltaTime);
+            }
+        }
+        else cc.Move(moveDir * Time.deltaTime);
+        
         if (Input.GetAxisRaw("Fire3") == 0)
         {
             m_isDashActivated = false;
