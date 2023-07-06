@@ -23,11 +23,20 @@ public class PlayerCollision : MonoBehaviour
                 {
                     PlayerInfos.pi.GetScore();
                     if (gameObject.tag == "orangeCube")
+                    {
                         PlayerInfos.pi.GetGold(Constants.orangeCubeGold);
+                        PlayerInfos.pi.GetXP(Constants.orangeCubeXP);
+                    }
                     if (gameObject.tag == "redCube")
+                    {
                         PlayerInfos.pi.GetGold(Constants.redCubeGold);
+                        PlayerInfos.pi.GetXP(Constants.redCubeXP);
+                    }
                     if (gameObject.tag == "greenCube")
+                    {
                         PlayerInfos.pi.GetGold(Constants.greenCubeGold);
+                        PlayerInfos.pi.GetXP(Constants.greenCubeXP);
+                    }
 
                     Destroy(gameObject);
                     Destroy(other.gameObject);

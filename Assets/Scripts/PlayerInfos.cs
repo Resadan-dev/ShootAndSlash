@@ -12,8 +12,10 @@ public class PlayerInfos : MonoBehaviour
     public int score = 0;
     public int gold;
     public int life;
+    public int xp;
     public TextMeshProUGUI scoreTxt;
     public TextMeshProUGUI goldTxt;
+    public TextMeshProUGUI xpTxt;
     public TextMeshProUGUI lifeTxt;
     public TextMeshProUGUI DashcoolDown;
     public bool isGameOver = false;
@@ -33,6 +35,13 @@ public class PlayerInfos : MonoBehaviour
         gold = goldStored + amount;
         Constants.SetValueInMemory("gold", gold);
         goldTxt.text = "Gold : " + gold.ToString();
+    }
+    public void GetXP(int amount)
+    {
+        int xpStored = Constants.GetValueInMemory("xp");
+        xp = xpStored + amount;
+        Constants.SetValueInMemory("xp", xp);
+        xpTxt.text = "XP : " + xp.ToString();
     }
     public void GetLife(int amount)
     {
@@ -65,6 +74,7 @@ void Start()
     {
         goldTxt.text = "Gold : " + Constants.GetValueInMemory("gold");
         lifeTxt.text = "Life : " + Constants.GetValueInMemory("life");
+        xpTxt.text = "XP : " + Constants.GetValueInMemory("xp");
     }
 
     // Update is called once per frame

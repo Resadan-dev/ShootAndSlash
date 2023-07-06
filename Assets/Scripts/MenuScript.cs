@@ -42,6 +42,7 @@ public class MenuScript : MonoBehaviour
     public void ResetValuesInMemory()
     {
         Constants.SetValueInMemory("gold", 0);
+        Constants.SetValueInMemory("xp", 0);
         Constants.SetValueInMemory("newWeaponBool", 0);
         Constants.SetValueInMemory("armorBool", 0);
         Constants.SetValueInMemory("Score", 0);

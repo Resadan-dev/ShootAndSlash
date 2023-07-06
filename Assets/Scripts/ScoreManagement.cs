@@ -10,6 +10,7 @@ public class ScoreManagement : MonoBehaviour
     public TextMeshProUGUI score;
     public TextMeshProUGUI maxScore;
     public TextMeshProUGUI gold;
+    public TextMeshProUGUI xp;
     public int scoreInt = 0;
     public int maxScoreInt = 0;
     // Start is called before the first frame update
@@ -22,6 +23,10 @@ public class ScoreManagement : MonoBehaviour
         }
         int goldInt = Constants.GetValueInMemory("gold");
         gold.text = "Gold : " + goldInt;
+
+        int xpInt = Constants.GetValueInMemory("xp");
+        xp.text = "XP : " + xpInt;
+
         int scoreRecorded = Constants.GetValueInMemory("Score");
         print("scoreRecorded : " + scoreRecorded);
         int maxScoreRecorded = Constants.GetValueInMemory("MaxScore");

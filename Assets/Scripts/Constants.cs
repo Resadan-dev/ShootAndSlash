@@ -56,6 +56,11 @@ namespace Assets.Scripts
         public static readonly int orangeCubeGold = 30;
         public static readonly int redCubeGold = 100;
 
+        /*---XP---*/
+        public static readonly int greenCubeXP = 1;
+        public static readonly int orangeCubeXP = 2;
+        public static readonly int redCubeXP = 5;
+
         /*---Color---*/
         public static Color32 GetCubeColor(string color)
         {
@@ -86,6 +91,7 @@ namespace Assets.Scripts
         //gold
         //score
         //MaxScore
+        //xp
         //newWeaponBool
         //armorBool
         //DashActivated

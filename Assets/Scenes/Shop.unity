@@ -1106,7 +1106,7 @@ MonoBehaviour:
   goldText: {fileID: 567939962}
   IsnewWeapon: 0
   IsnewArmor: 0
-  Shield: {fileID: 1694171333841922431, guid: da36c7b0d682eb44f9316720cd1cd768, type: 3}
+  Shield: {fileID: 1134486200050310070, guid: da36c7b0d682eb44f9316720cd1cd768, type: 3}
 --- !u!1 &1255615931
 GameObject:
   m_ObjectHideFlags: 0
