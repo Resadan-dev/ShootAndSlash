@@ -47,7 +47,7 @@ public class MenuScript : MonoBehaviour
         Constants.SetValueInMemory("armorBool", 0);
         Constants.SetValueInMemory("Score", 0);
         Constants.SetValueInMemory("MaxScore", 0);
-        Constants.SetValueInMemory("life", 1);
+        Constants.SetValueInMemory("life", Constants.nbLives);
         Constants.SetValueInMemory("DashActivated", 0);
         Constants.SetValueInMemory("Level1", 0);
     }

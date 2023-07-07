@@ -1,9 +1,12 @@
+using Assets.Scripts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class ChangeLives : MonoBehaviour
 {
+    private string input;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,11 @@ public class Explosion : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ReadStringInput(string s)
+    {
+        int input = Convert.ToInt32(s);
+        Constants.nbLives = input;
     }
 }

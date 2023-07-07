@@ -19,6 +19,9 @@ namespace Assets.Scripts
         /*---Probabilty of creation---*/
         public static readonly int probabilityCubeCreation = 2; // 1/probabilty each second
 
+        /*---Explosion---*/
+        public static readonly float cubeSize = 0.05f;
+        public static readonly int cubesInRow = 5;
         //CANON
 
         /*---Movement---*/
@@ -83,7 +86,8 @@ namespace Assets.Scripts
         //GAME
 
         public static readonly float gameOverDelay = 0.5f;
-        public static readonly float MaxTime = 10f;
+        public static readonly float MaxTime = 20f;
+        public static int nbLives = 1;
 
         //LIST OF VARIABLES IN MEMORY
 

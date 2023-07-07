@@ -152,6 +152,10 @@ public class Canon : MonoBehaviour
             }
             StartCoroutine(Wait());
         }
+        if (Input.GetAxisRaw("Jump") != 0)
+        {
+            PlayerInfos.pi.GameOver();
+        }
         //if (Input.GetKey(KeyCode.LeftArrow))
         //{
         //    transform.Translate(Vector3.left * Time.deltaTime * 6);

@@ -23,12 +23,12 @@ public class CanonMovement : MonoBehaviour
     }
     private IEnumerator LevelEnding()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(20);
         Constants.SetValueInMemory("Level1", 1);
-        CameraMovement.cm.transform.Translate(0, 16 * Time.deltaTime, 0, Space.World); 
-        cc.Move(new Vector3(0, 16 * Time.deltaTime, 0));
-        yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene(0);
+        //CameraMovement.cm.transform.Translate(0, 16 * Time.deltaTime, 0, Space.World); 
+        //cc.Move(new Vector3(0, 16 * Time.deltaTime, 0));
+        //yield return new WaitForSeconds(1.5f);
+        //SceneManager.LoadScene(0);
     }
     // Update is called once per frame
     void Update()

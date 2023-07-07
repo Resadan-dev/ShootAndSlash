@@ -63,7 +63,8 @@ public class MenuShop : MonoBehaviour
             GameObject btn = GameObject.Find("ShieldButton");
             Button imgButton = btn.GetComponent<Button>();
             imgButton.interactable = false;
-            Constants.SetValueInMemory("life", 2);
+            int life = Constants.GetValueInMemory("life");
+            Constants.SetValueInMemory("life", life + 1);
             Constants.SetValueInMemory("armorBool", 1);
             IsnewArmor = true;
             GameObject btnBack = GameObject.Find("BackToMenuButton");

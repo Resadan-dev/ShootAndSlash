@@ -13,6 +13,7 @@ public class PlayerInfos : MonoBehaviour
     public int gold;
     public int life;
     public int xp;
+    public TextMeshProUGUI levelTxt;
     public TextMeshProUGUI scoreTxt;
     public TextMeshProUGUI goldTxt;
     public TextMeshProUGUI xpTxt;
