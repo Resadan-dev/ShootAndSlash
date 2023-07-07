@@ -42,8 +42,8 @@ public class CanonMovement : MonoBehaviour
             if (CameraMovement.cm.GetCamPosition() > 3 && CameraMovement.cm.GetCamPosition() < 9)
             {
                 cc.Move(new Vector3(0, 0, 3 * Time.deltaTime));
-            } 
-            if (CameraMovement.cm.GetCamPosition() > 9 && CameraMovement.cm.GetCamPosition() < 12) 
+            }
+            if (CameraMovement.cm.GetCamPosition() > 9 && CameraMovement.cm.GetCamPosition() < 12)
                 cc.Move(new Vector3(0, 0, 4 * Time.deltaTime));
             if (CameraMovement.cm.GetCamPosition() > 12)
                 cc.Move(new Vector3(0, 0, 6 * Time.deltaTime));

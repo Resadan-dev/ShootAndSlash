@@ -30,6 +30,7 @@ public class TimerScript : MonoBehaviour
             {
                 timeLeft = MaxTime;
                 currentLevel += 1;
+                Constants.speed += 0.8f;
                 PlayerInfos.pi.levelTxt.text = "Level : " + currentLevel;
             }
         }

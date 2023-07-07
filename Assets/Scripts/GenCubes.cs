@@ -20,33 +20,35 @@ public class GenCubes : MonoBehaviour
     void Start()
     {
 
+        //InvokeRepeating("CreateCubes", 0.0f, 10f);
         InvokeRepeating("CreateCubes", 0.0f, 0.35f);
 
     }
     void CreateCubes()
     {
         System.Random rand = new System.Random();
+        float posVariation = rand.Next(-6,6);
         for (int i = 0; i < levelSize; i++)
         {
             if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
-                Instantiate(block, new Vector3(x1, y, z), Quaternion.identity, Cubes);
+                Instantiate(block, new Vector3(x1 + posVariation/10, y, z + posVariation/10), Quaternion.identity, Cubes);
             }
             if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
-                Instantiate(block, new Vector3(x2, y, z), Quaternion.identity, Cubes);
+                Instantiate(block, new Vector3(x2 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
             }
             if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
-                Instantiate(block, new Vector3(x3, y, z), Quaternion.identity, Cubes);
+                Instantiate(block, new Vector3(x3 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
             }
             if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
-                Instantiate(block, new Vector3(x4, y, z), Quaternion.identity, Cubes);
+                Instantiate(block, new Vector3(x4 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
             }
             if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
             {
-                Instantiate(block, new Vector3(x5, y, z), Quaternion.identity, Cubes);
+                Instantiate(block, new Vector3(x5 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
             }
             z = z + 2;
         }

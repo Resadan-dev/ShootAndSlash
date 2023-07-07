@@ -152,7 +152,7 @@ public class Canon : MonoBehaviour
             }
             StartCoroutine(Wait());
         }
-        if (Input.GetAxisRaw("Jump") != 0)
+        if (Input.GetAxisRaw("Fire2") != 0 || Input.GetKey(KeyCode.E))
         {
             PlayerInfos.pi.GameOver();
         }

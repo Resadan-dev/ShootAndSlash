@@ -80,8 +80,8 @@ namespace Assets.Scripts
             }
         }
         /*---Bullet---*/
-        public static readonly float speed = -2f;
-        public static readonly int probabilityBullet = 4; // 1/probabilty each second
+        public static float speed = -2f;
+        public static int probabilityBullet = 4; // 1/probabilty each second
 
         //GAME
 
