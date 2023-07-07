@@ -153,7 +153,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   life: 1
-  Shield: {fileID: 1694171333841922431, guid: da36c7b0d682eb44f9316720cd1cd768, type: 3}
+  Shield: {fileID: 1134486200050310070, guid: da36c7b0d682eb44f9316720cd1cd768, type: 3}
+  explosionForce: 9.45
+  explosionRadius: 1.52
+  explosionUpwards: 4
 --- !u!114 &2270058746107259613
 MonoBehaviour:
   m_ObjectHideFlags: 0
