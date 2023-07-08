@@ -23,12 +23,10 @@ public class BulletCollision : MonoBehaviour
             {
                 if (Constants.GetValueInMemory("DashActivated") == 1)
                 {
-                    print("C'est moi");
-                    print("Tout va bien");
+
                 }
                 else
                 {
-                    print("C'est pas moi");
                     int lifePlayer = Constants.GetValueInMemory("life");
                     print(lifePlayer);
                     if (lifePlayer > 1)

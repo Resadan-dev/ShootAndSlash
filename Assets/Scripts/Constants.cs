@@ -13,11 +13,11 @@ namespace Assets.Scripts
         //CUBES GEN
 
         /*---Position---*/
-        public static readonly float distance_Z_betweenCubes = 2f;
+        public static readonly float distance_Z_betweenCubes = 0.5f;
         public static readonly float distance_X_betweenCubes = 1.6f;
 
         /*---Probabilty of creation---*/
-        public static readonly int probabilityCubeCreation = 2; // 1/probabilty each second
+        public static readonly int probabilityCubeCreation = 1; // 1/probabilty each second
 
         /*---Explosion---*/
         public static readonly float cubeSize = 0.05f;
@@ -53,6 +53,7 @@ namespace Assets.Scripts
         public static readonly int greenCubeLife = 1;
         public static readonly int orangeCubeLife = 3;
         public static readonly int redCubeLife = 10;
+        public static readonly int blackCubeLife = 1500;
 
         /*---Gold---*/
         public static readonly int greenCubeGold = 10;
@@ -75,13 +76,15 @@ namespace Assets.Scripts
                     return new Color32(255, 155, 0, 0);
                 case "red":
                     return new Color32(255, 0, 0, 0);
+                case "black":
+                    return new Color32(0, 0, 0, 0);
 
                 default: return new Color32(0, 0, 0, 0);
             }
         }
         /*---Bullet---*/
         public static float speed = -2f;
-        public static int probabilityBullet = 4; // 1/probabilty each second
+        public static int probabilityBullet = 6; // 1/probabilty each second
 
         //GAME
 

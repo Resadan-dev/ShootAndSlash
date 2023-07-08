@@ -17,11 +17,17 @@ public class GenCubes : MonoBehaviour
     public float z = Constants.distance_Z_betweenCubes;
     public float y = 0.42f;
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
 
         //InvokeRepeating("CreateCubes", 0.0f, 10f);
-        InvokeRepeating("CreateCubes", 0.0f, 0.35f);
+        InvokeRepeating("CreateCubes", 0.0f, 0.70f);
+        
+        yield return new WaitForSeconds(15);
+        CancelInvoke("CreateCubes");
+        yield return new WaitForSeconds(1);
+        InvokeRepeating("CreateCubes", 0.0f, 0.50f);
+
 
     }
     void CreateCubes()
@@ -50,12 +56,21 @@ public class GenCubes : MonoBehaviour
             {
                 Instantiate(block, new Vector3(x5 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
             }
-            z = z + 2;
+            z = z + 1;
         }
     }
     // Update is called once per frame
     void Update()
     {
+        Cubes.transform.Translate(0, 0, -3 * Time.deltaTime, Space.World);
 
+        //    if (transform.localPosition.z < 3)
+        //        transform.Translate(0, 0, 2 * Time.deltaTime, Space.World);
+        //    if (transform.localPosition.z > 3 && transform.localPosition.z < 9)
+        //        transform.Translate(0, 0, 3 * Time.deltaTime, Space.World);
+        //    if (transform.localPosition.z > 9 && transform.localPosition.z < 12)
+        //        transform.Translate(0, 0, 4 * Time.deltaTime, Space.World);
+        //    if (transform.localPosition.z > 12)
+        //        transform.Translate(0, 0, 6 * Time.deltaTime, Space.World);
     }
 }

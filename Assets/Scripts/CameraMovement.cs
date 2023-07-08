@@ -27,17 +27,17 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerInfos.pi.isGameOver == false)
-        {
-            if (transform.localPosition.z < 3)
-                transform.Translate(0, 0, 2 * Time.deltaTime, Space.World);
-            if (transform.localPosition.z > 3 && transform.localPosition.z < 9)
-                transform.Translate(0, 0, 3 * Time.deltaTime, Space.World);
-            if (transform.localPosition.z > 9 && transform.localPosition.z < 12)
-                transform.Translate(0, 0, 4 * Time.deltaTime, Space.World);
-            if (transform.localPosition.z > 12)
-                transform.Translate(0, 0, 6 * Time.deltaTime, Space.World);
+        //if (PlayerInfos.pi.isGameOver == false)
+        //{
+        //    if (transform.localPosition.z < 3)
+        //        transform.Translate(0, 0, 2 * Time.deltaTime, Space.World);
+        //    if (transform.localPosition.z > 3 && transform.localPosition.z < 9)
+        //        transform.Translate(0, 0, 3 * Time.deltaTime, Space.World);
+        //    if (transform.localPosition.z > 9 && transform.localPosition.z < 12)
+        //        transform.Translate(0, 0, 4 * Time.deltaTime, Space.World);
+        //    if (transform.localPosition.z > 12)
+        //        transform.Translate(0, 0, 6 * Time.deltaTime, Space.World);
 
-        }
+        //}
     }
 }

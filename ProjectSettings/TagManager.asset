@@ -11,6 +11,8 @@ TagManager:
   - cubeBullet
   - shield
   - bottomLimit
+  - blackCube
+  - endGameLevel1
   layers:
   - Default
   - TransparentFX

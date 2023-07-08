@@ -27,7 +27,7 @@ public class CubeAttack : MonoBehaviour
             {
                 bulletSpawnCube.transform.rotation = Quaternion.Euler(0, 180, 0);
                 var bullet = Instantiate(cubeBulletPrefab, bulletSpawnCube.position, bulletSpawnCube.rotation);
-                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * (bulletSpeed/2);
+                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * (bulletSpeed);
                 bullet.transform.tag = "cubeBullet";
                 var renderer = bullet.GetComponent<Renderer>();
                 renderer.material.color = Constants.GetCubeColor("green");
@@ -36,7 +36,7 @@ public class CubeAttack : MonoBehaviour
             {
                 bulletSpawnCube.transform.rotation = Quaternion.Euler(0, 180, 0);
                 var bullet = Instantiate(cubeBulletPrefab, bulletSpawnCube.position, bulletSpawnCube.rotation);
-                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * (bulletSpeed);
+                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * (bulletSpeed * 1.4f);
                 bullet.transform.tag = "cubeBullet";
                 var renderer = bullet.GetComponent<Renderer>();
                 renderer.material.color = Constants.GetCubeColor("orange");
@@ -45,9 +45,8 @@ public class CubeAttack : MonoBehaviour
             {
                 float angle = (float)ComputeAngle();
                 bulletSpawnCube.transform.rotation = Quaternion.Euler(0, angle, 0);
-                print("Angle: " + angle);
                 var bullet = Instantiate(cubeBulletPrefab, bulletSpawnCube.position, bulletSpawnCube.rotation);
-                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * (bulletSpeed / 2);
+                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnCube.forward * (bulletSpeed / 1.4f);
                 bullet.transform.tag = "cubeBullet";
                 var renderer = bullet.GetComponent<Renderer>();
                 renderer.material.color = Constants.GetCubeColor("red");
@@ -62,15 +61,15 @@ public class CubeAttack : MonoBehaviour
         if (player != null)
         {
             float x1 = player.transform.position.x;
-            float z1 = player.transform.position.z +1.5f;
+            float z1 = player.transform.position.z;
             float x2 = bulletSpawnCube.transform.position.x;
             float z2= bulletSpawnCube.transform.position.z;
 
             double angle = Math.Atan((x1 - x2) / (z1 - z2)) * (180 / Math.PI);
-            if (z1 < z2)
-            {
+            //if (z1 < z2)
+            //{
                 angle += 180;
-            }
+            //}
             return angle;
         }
         return 0;

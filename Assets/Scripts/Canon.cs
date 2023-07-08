@@ -55,12 +55,11 @@ public class Canon : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.tag == "greenCube" || other.gameObject.tag == "orangeCube" || other.gameObject.tag == "redCube")
+        if (other.gameObject.tag == "greenCube" || other.gameObject.tag == "orangeCube" || other.gameObject.tag == "redCube" || other.gameObject.tag == "blackCube")
         {
             if (Constants.GetValueInMemory("DashActivated") == 1)
             {
-                print("C'est moi");
-                print("Tout va bien");
+
             }
             else
             {
@@ -145,7 +144,6 @@ public class Canon : MonoBehaviour
             
             if (m_isDashActivated == false)
             {
-                print("coucou");
                 moveDash = new Vector3(Input.GetAxis("Horizontal") * 200, moveDir.y, Input.GetAxis("Vertical") * 200);
                 cc.Move(moveDash * Time.deltaTime);
                 m_isDashActivated = true;

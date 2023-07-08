@@ -19,6 +19,10 @@ public class PlayerCollision : MonoBehaviour
         {
             print("OK");
         }
+        if (gameObject.tag == "blackCube")
+        {
+            Destroy(other.gameObject);
+        }
         else
         {
             if (other.gameObject.tag == "Bullet")
@@ -58,8 +62,6 @@ public class PlayerCollision : MonoBehaviour
                     {
                         Color color = gameObject.GetComponent<Renderer>().material.color;
                         Color newColor = new Color(color.r, (float)(color.g + 0.08), (float)(color.b + 0.08));
-                        print("color:" + color);
-                        print("new color: " + newColor);
                         gameObject.GetComponent<Renderer>().material.color = newColor;
                     }
                     Destroy(other.gameObject);
@@ -84,6 +86,14 @@ public class PlayerCollision : MonoBehaviour
         myRenderer.material.color = newColor;
         myRenderer.tag = "redCube";
     }
+    public void SetBlackCube()
+    {
+        life = Constants.blackCubeLife;
+        Renderer myRenderer = GetComponent<Renderer>();
+        Color32 newColor = new Color32(0, 0, 0, 0);
+        myRenderer.material.color = newColor;
+        myRenderer.tag = "blackCube";
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -94,9 +104,13 @@ public class PlayerCollision : MonoBehaviour
         {
             SetOrangeCube();
         }
-        if (rand.Next(0,5) == 0)
+        else if (rand.Next(0,5) == 0)
         {
             SetRedCube();
+        }
+        else if (rand.Next(0,7) == 0)
+        {
+            SetBlackCube();
         }
         cubesPivotDistance = Constants.cubeSize * Constants.cubesInRow / 2;
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
