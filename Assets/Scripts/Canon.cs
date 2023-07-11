@@ -52,10 +52,10 @@ public class Canon : MonoBehaviour
             isCollisionBottomLimit = false;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.tag == "greenCube" || other.gameObject.tag == "orangeCube" || other.gameObject.tag == "redCube" || other.gameObject.tag == "blackCube")
+        if (other.gameObject.tag == "greenCube" || other.gameObject.tag == "orangeCube" || other.gameObject.tag == "redCube" || other.gameObject.tag == "blackCube" || other.gameObject.tag == "otherCube")
         {
             if (Constants.GetValueInMemory("DashActivated") == 1)
             {
@@ -77,7 +77,61 @@ public class Canon : MonoBehaviour
                     MeshRenderer meshRenderer = Shield.GetComponent<MeshRenderer>();
                     meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                     PlayerInfos.pi.GetLife(-1);
+                    cc.detectCollisions = false;
+                    Renderer myRenderer = GetComponent<Renderer>();
+                    Color32 newColor = new Color32(37, 90, 255, 20);
+                    myRenderer.material.color = newColor;
+                    yield return new WaitForSeconds(1);
+                    Color32 newColor2 = new Color32(37, 90, 255, 255);
+                    myRenderer.material.color = newColor2;
+                    cc.detectCollisions = true;
                 }
+            }
+        }
+        if (other.gameObject.tag == "cubeBullet")
+        {
+            if (Constants.GetValueInMemory("DashActivated") == 1)
+            {
+
+            }
+            else
+            {
+                int currentLife = Constants.GetValueInMemory("life");
+                print("current life : " + currentLife);
+                if (currentLife == 1)
+                {
+                    Destroy(gameObject);
+                    PlayerInfos.pi.GameOver();
+                }
+                else
+                {
+                    int lifePlayer = Constants.GetValueInMemory("life");
+                    if (lifePlayer > 1)
+                    {
+                        Renderer renderer = Shield.GetComponent<Renderer>();
+                        renderer.sharedMaterial.color = new Color32(255, 255, 255, 0);
+                        MeshRenderer meshRenderer = Shield.GetComponent<MeshRenderer>();
+                        meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                        PlayerInfos.pi.GetLife(-1);
+                        
+                        lifePlayer = Constants.GetValueInMemory("life");
+                        PlayerInfos.pi.lifeTxt.text = "Life : " + lifePlayer;
+                        cc.detectCollisions = false;
+                        Renderer myRenderer = GetComponent<Renderer>();
+                        Color32 newColor = new Color32(37, 90, 255, 20);
+                        myRenderer.material.color = newColor;
+                        yield return new WaitForSeconds(1);
+                        Color32 newColor2 = new Color32(37, 90, 255, 255);
+                        myRenderer.material.color = newColor2;
+                        cc.detectCollisions = true;
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                        PlayerInfos.pi.GameOver();
+                    }
+                }
+
             }
         }
     }
@@ -117,7 +171,7 @@ public class Canon : MonoBehaviour
             }
         }
 
-        moveDir = new Vector3(Input.GetAxis("Horizontal") * 6, moveDir.y, Input.GetAxis("Vertical") * 6);
+        moveDir = new Vector3(Input.GetAxis("Horizontal") * Constants.canonSpeedMovement, moveDir.y, Input.GetAxis("Vertical") * Constants.canonSpeedMovement);
         if (isCollisionBottomLimit)
         {
             if (Input.GetAxis("Vertical") >= 0)
@@ -126,7 +180,7 @@ public class Canon : MonoBehaviour
             }
             else
             {
-                moveDir = new Vector3(Input.GetAxis("Horizontal") * 6, moveDir.y, 0);
+                moveDir = new Vector3(Input.GetAxis("Horizontal") * Constants.canonSpeedMovement, moveDir.y, 0);
                 cc.Move(moveDir * Time.deltaTime);
             }
         }

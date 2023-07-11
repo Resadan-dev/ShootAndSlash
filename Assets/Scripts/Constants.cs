@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -25,7 +26,8 @@ namespace Assets.Scripts
         //CANON
 
         /*---Movement---*/
-        public static readonly float canonSpeed = 95400f;
+        public static float canonSpeed = 95400f;
+        public static float canonSpeedMovement = 6;
         /*---Bullet---*/
         public static readonly float bulletSpeed = 10f;
         public static readonly float spawnBulletPositionLeft = -0.7f;
@@ -40,6 +42,7 @@ namespace Assets.Scripts
         /*---Prices---*/
         public static readonly int newWeaponPrice = 0;
         public static readonly int armorPrice = 0;
+        public static readonly int increaseSpeed = 5;
 
         /*---Shield_Color---*/
         public static Color32 ShieldColor()
@@ -89,7 +92,7 @@ namespace Assets.Scripts
         //GAME
 
         public static readonly float gameOverDelay = 0.5f;
-        public static readonly float MaxTime = 20f;
+        public static readonly float MaxTime = 45f;
         public static int nbLives = 1;
 
         //LIST OF VARIABLES IN MEMORY

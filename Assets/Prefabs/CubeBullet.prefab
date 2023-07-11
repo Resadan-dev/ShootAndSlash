@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2887411689257592190}
   - component: {fileID: 2107713026134531484}
   - component: {fileID: 3006138673890926392}
-  - component: {fileID: 5305966808788799276}
   m_Layer: 0
   m_Name: CubeBullet
   m_TagString: cubeBullet
@@ -136,16 +135,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5305966808788799276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6553200211520673078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6875adf37fb4aab49950269eee74d61e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Shield: {fileID: 1134486200050310070, guid: da36c7b0d682eb44f9316720cd1cd768, type: 3}

@@ -7,6 +7,7 @@ using Assets.Scripts;
 public class GenCubes : MonoBehaviour
 {
     public GameObject block;
+    public GameObject maxiCube;
     public Transform Cubes;
     public int levelSize;
     public float x5 = 1.5f - 1.537f;
@@ -23,9 +24,10 @@ public class GenCubes : MonoBehaviour
         //InvokeRepeating("CreateCubes", 0.0f, 10f);
         InvokeRepeating("CreateCubes", 0.0f, 0.70f);
         
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(13);
         CancelInvoke("CreateCubes");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(12);
+        z = Constants.distance_Z_betweenCubes + 1;
         InvokeRepeating("CreateCubes", 0.0f, 0.50f);
 
 
@@ -34,35 +36,49 @@ public class GenCubes : MonoBehaviour
     {
         System.Random rand = new System.Random();
         float posVariation = rand.Next(-6,6);
-        for (int i = 0; i < levelSize; i++)
+        if (rand.Next(0,3) == 0)
         {
-            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
+            Instantiate(maxiCube, new Vector3(x1+3.2f, y, z), Quaternion.identity, Cubes);
+        }
+        else
+        {
+            for (int i = 0; i < levelSize; i++)
             {
-                Instantiate(block, new Vector3(x1 + posVariation/10, y, z + posVariation/10), Quaternion.identity, Cubes);
+                if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
+                {
+                    Instantiate(block, new Vector3(x1 + posVariation/10, y, z + posVariation/10), Quaternion.identity, Cubes);
+                }
+                if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
+                {
+                    Instantiate(block, new Vector3(x2 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
+                }
+                if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
+                {
+                    Instantiate(block, new Vector3(x3 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
+                }
+                if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
+                {
+                    Instantiate(block, new Vector3(x4 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
+                }
+                if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
+                {
+                    Instantiate(block, new Vector3(x5 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
+                }
+                z = z + 1;
             }
-            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
-            {
-                Instantiate(block, new Vector3(x2 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
-            }
-            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
-            {
-                Instantiate(block, new Vector3(x3 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
-            }
-            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
-            {
-                Instantiate(block, new Vector3(x4 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
-            }
-            if (rand.Next(0, Constants.probabilityCubeCreation) == 0)
-            {
-                Instantiate(block, new Vector3(x5 + posVariation / 10, y, z + posVariation / 10), Quaternion.identity, Cubes);
-            }
-            z = z + 1;
         }
     }
     // Update is called once per frame
     void Update()
     {
-        Cubes.transform.Translate(0, 0, -3 * Time.deltaTime, Space.World);
+        if (PlayerInfos.pi.levelTxt.text == "Level : 1")
+        {
+            Cubes.transform.Translate(0, 0, -3 * Time.deltaTime, Space.World);
+        }
+        if (PlayerInfos.pi.levelTxt.text == "Level : 2")
+        {
+            Cubes.transform.Translate(0, 0, -5f * Time.deltaTime, Space.World);
+        }
 
         //    if (transform.localPosition.z < 3)
         //        transform.Translate(0, 0, 2 * Time.deltaTime, Space.World);

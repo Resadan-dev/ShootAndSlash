@@ -19,10 +19,6 @@ public class PlayerCollision : MonoBehaviour
         {
             print("OK");
         }
-        if (gameObject.tag == "blackCube")
-        {
-            Destroy(other.gameObject);
-        }
         else
         {
             if (other.gameObject.tag == "Bullet")
@@ -34,20 +30,36 @@ public class PlayerCollision : MonoBehaviour
                     {
                         PlayerInfos.pi.GetGold(Constants.orangeCubeGold);
                         PlayerInfos.pi.GetXP(Constants.orangeCubeXP);
+                        Destroy(gameObject);
+                        Destroy(other.gameObject);
                     }
                     if (gameObject.tag == "redCube")
                     {
                         PlayerInfos.pi.GetGold(Constants.redCubeGold);
                         PlayerInfos.pi.GetXP(Constants.redCubeXP);
+                        Destroy(gameObject);
+                        Destroy(other.gameObject);
                     }
                     if (gameObject.tag == "greenCube")
                     {
                         PlayerInfos.pi.GetGold(Constants.greenCubeGold);
                         PlayerInfos.pi.GetXP(Constants.greenCubeXP);
+                        Destroy(gameObject);
+                        Destroy(other.gameObject);
+                    }
+                    if (gameObject.tag == "maxiCube")
+                    {
+                        PlayerInfos.pi.GetGold(Constants.greenCubeGold);
+                        PlayerInfos.pi.GetXP(Constants.greenCubeXP);
+                        Destroy(gameObject);
+                        Destroy(other.gameObject);
+                    }
+                    if (gameObject.tag == "otherCube")
+                    {
+                        Destroy(other.gameObject);
                     }
 
-                    Destroy(gameObject);
-                    Destroy(other.gameObject);
+
                 }
                 else
                 {
@@ -99,18 +111,26 @@ public class PlayerCollision : MonoBehaviour
     {
 
         System.Random rand = new System.Random();
-
-        if (rand.Next(0, 3) == 0)
+        Renderer myRenderer = GetComponent<Renderer>();
+        if (rand.Next(0, 3) == 0 && myRenderer.tag != "maxiCube")
         {
             SetOrangeCube();
         }
-        else if (rand.Next(0,5) == 0)
+        else if (rand.Next(0, 5) == 0 && myRenderer.tag != "maxiCube")
         {
             SetRedCube();
         }
-        else if (rand.Next(0,7) == 0)
+        else if (rand.Next(0, 7) == 0 && myRenderer.tag != "maxiCube")
         {
             SetBlackCube();
+        }
+        if (myRenderer.tag == "maxiCube")
+        {
+            if (rand.Next(0, 3) == 0)
+            {
+                SetBlackCube();
+            }
+            else SetRedCube();
         }
         cubesPivotDistance = Constants.cubeSize * Constants.cubesInRow / 2;
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);

@@ -8,10 +8,11 @@ using UnityEngine;
 public class BulletCollision : MonoBehaviour
 {
     public GameObject Shield;
+    public CharacterController cc;
     private void Awake()
     {
     }
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
         if (other.gameObject == Shield)
         {
@@ -19,7 +20,7 @@ public class BulletCollision : MonoBehaviour
         }
         else
         {
-            if (other.gameObject.tag == "Player")
+            if (other.gameObject.tag == "cubeBullet")
             {
                 if (Constants.GetValueInMemory("DashActivated") == 1)
                 {
@@ -28,7 +29,7 @@ public class BulletCollision : MonoBehaviour
                 else
                 {
                     int lifePlayer = Constants.GetValueInMemory("life");
-                    print(lifePlayer);
+                    print("lllllllife : "+lifePlayer);
                     if (lifePlayer > 1)
                     {
                         Renderer renderer = Shield.GetComponent<Renderer>();
@@ -37,8 +38,14 @@ public class BulletCollision : MonoBehaviour
                         meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                         PlayerInfos.pi.GetLife(-1);
                         PlayerInfos.pi.lifeTxt.text = "Life : "+lifePlayer;
-
-
+                        Canon.can.cc.detectCollisions = false;
+                        Renderer myRenderer = GetComponent<Renderer>();
+                        Color32 newColor = new Color32(37, 90, 255, 20);
+                        myRenderer.material.color = newColor;
+                        yield return new WaitForSeconds(1);
+                        Canon.can.cc.detectCollisions = false;
+                        Color32 newColor2 = new Color32(37, 90, 255, 255);
+                        myRenderer.material.color = newColor2;
                     }
                     else
                     {

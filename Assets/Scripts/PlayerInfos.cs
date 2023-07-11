@@ -17,6 +17,7 @@ public class PlayerInfos : MonoBehaviour
     public TextMeshProUGUI scoreTxt;
     public TextMeshProUGUI goldTxt;
     public TextMeshProUGUI xpTxt;
+    public TextMeshProUGUI xpLevelTxt;
     public TextMeshProUGUI lifeTxt;
     public TextMeshProUGUI DashcoolDown;
     public bool isGameOver = false;
@@ -39,10 +40,25 @@ public class PlayerInfos : MonoBehaviour
     }
     public void GetXP(int amount)
     {
+        int xpLevelStored = Constants.GetValueInMemory("xpLevel");
+        xpLevelTxt.text = "XP level : " + xpLevelStored;
         int xpStored = Constants.GetValueInMemory("xp");
+        int forloop = xpStored;
+        for (int i = 0; i < amount; i++)
+        {
+            forloop += 1;
+            if (forloop % 10 == 0)
+            {
+                xpLevelStored = Constants.GetValueInMemory("xpLevel");
+                xpLevelStored += 1;
+                Constants.SetValueInMemory("xpLevel", xpLevelStored);
+                xpLevelTxt.text = "XP level : " + xpLevelStored;
+            }
+        }
         xp = xpStored + amount;
         Constants.SetValueInMemory("xp", xp);
         xpTxt.text = "XP : " + xp.ToString();
+
     }
     public void GetLife(int amount)
     {
@@ -73,9 +89,9 @@ public class PlayerInfos : MonoBehaviour
 // Start is called before the first frame update
 void Start()
     {
-        goldTxt.text = "Gold : " + Constants.GetValueInMemory("gold");
-        lifeTxt.text = "Life : " + Constants.GetValueInMemory("life");
-        xpTxt.text = "XP : " + Constants.GetValueInMemory("xp");
+        //goldTxt.text = "Gold : " + Constants.GetValueInMemory("gold");
+        //lifeTxt.text = "Life : " + Constants.GetValueInMemory("life");
+        //xpTxt.text = "XP : " + Constants.GetValueInMemory("xp");
     }
 
     // Update is called once per frame

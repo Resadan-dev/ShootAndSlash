@@ -22,7 +22,7 @@ public class MenuScript : MonoBehaviour
     }
     public void level2()
     {
-        level.text = "Level 2";
+        //level.text = "Level 2";
     }
 
     public void LoadShop()
@@ -50,6 +50,10 @@ public class MenuScript : MonoBehaviour
         Constants.SetValueInMemory("life", Constants.nbLives);
         Constants.SetValueInMemory("DashActivated", 0);
         Constants.SetValueInMemory("Level1", 0);
+        Constants.SetValueInMemory("xpLevel", 0);
+        Constants.SetValueInMemory("increaseSpeed", 0);
+        Constants.canonSpeedMovement = 6;
+
     }
     // Start is called before the first frame update
     void Start()

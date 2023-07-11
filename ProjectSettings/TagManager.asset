@@ -13,6 +13,9 @@ TagManager:
   - bottomLimit
   - blackCube
   - endGameLevel1
+  - plane
+  - otherCube
+  - maxiCube
   layers:
   - Default
   - TransparentFX
